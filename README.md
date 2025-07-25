@@ -20,6 +20,8 @@ Este projeto foi desenvolvido como desafio semanal com o objetivo de **criar, co
 - Node.js
 - Express
 - Firebase
+- Postman
+- axios
 
 **Front-end:**
 - HTML
