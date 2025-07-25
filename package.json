@@ -10,12 +10,18 @@
     "dev": "node --watch src/index.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+>>>>>>> ed4675a6b792696649f4a55b838e4b38ce18368f
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "firebase-admin": "^13.4.0"
   }
 }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> ed4675a6b792696649f4a55b838e4b38ce18368f
