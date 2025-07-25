@@ -1,10 +1,12 @@
 import "dotenv/config"
 
 import express from "express"; // codigos necessarios 
+import cors from "cors"; 
 import produtosRouter from "./routers/produtosRouter.js"; // paro o index e mando rodar a partir do Router
 import usuariosRouter from "./routers/usuariosRouter.js";
 
 const server = express(); // cria o obj no servidor 
+server.use(cors({origin:"*"})); //cria uma permissão p que qualquer origem pode acessar a minha API 
 server.use(express.json()); //converte o que recebemos em json
 
 const port = process.env.PORT||  3000; // a porta que eu estou usando, se ela não for achada no .env ela vai usar a porta 3000 
