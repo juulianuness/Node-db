@@ -18,7 +18,6 @@ usuariosRouter.get("/usuarios", async (req, res) => {
   }
 });
 
-
 usuariosRouter.get("/usuarios/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -92,4 +91,3 @@ export default usuariosRouter;
 
 // DELETE /usuarios/:id
 // Deve remover um usuário pelo id.
-//
