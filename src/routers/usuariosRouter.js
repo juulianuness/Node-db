@@ -18,6 +18,7 @@ usuariosRouter.get("/usuarios", async (req, res) => {
   }
 });
 
+
 usuariosRouter.get("/usuarios/:id", async (req, res) => {
   try {
     const id = req.params.id;

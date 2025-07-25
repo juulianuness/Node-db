@@ -18,6 +18,7 @@ produtosRouter.get("/produtos", async (req, res) => { // consulta todos itens do
 });
 
 
+
 // Consultando um item específico pelo id
 produtosRouter.get("/produtos/:id", async (req, res) => { // consulta produto por id
     try { // executar todo processo p trazer a lista
