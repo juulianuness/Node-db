@@ -25,8 +25,3 @@ Este projeto foi desenvolvido como desafio semanal com o objetivo de **criar, co
 - HTML + CSS + JavaScript
 
 ---
-
-## 🖥️ Como Rodar Localmente
-
-### 📦 Clonar o projeto
-
