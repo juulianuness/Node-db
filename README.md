@@ -22,6 +22,8 @@ Este projeto foi desenvolvido como desafio semanal com o objetivo de **criar, co
 - Firebase
 
 **Front-end:**
-- HTML + Bootstrap + JavaScript
+- HTML
+- Bootstrap
+- JavaScript
 
 ---
