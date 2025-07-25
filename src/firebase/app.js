@@ -10,3 +10,4 @@ export default app; // faz a conecção com todos os arquivos do firebase
 
 
 // o serviceAccount tem informações extremamente sensiveis e que não podem ser compartilhadas (principalmente a key e o id)
+//

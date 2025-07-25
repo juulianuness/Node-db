@@ -91,3 +91,4 @@ export default usuariosRouter;
 
 // DELETE /usuarios/:id
 // Deve remover um usuário pelo id.
+//
