@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 node_modules/
 *serveceAccount.json
 *.env
 
-=======
-*/node_modules
-*serveceAccount.json
-*.env
->>>>>>> ed4675a6b792696649f4a55b838e4b38ce18368f
