@@ -20,13 +20,12 @@ Este projeto foi desenvolvido como desafio semanal com o objetivo de **criar, co
 - Node.js
 - Express
 - Firebase
+- Postman
+- axios
 
 **Front-end:**
-- HTML + CSS + JavaScript
+- HTML
+- Bootstrap
+- JavaScript
 
 ---
-
-## 🖥️ Como Rodar Localmente
-
-### 📦 Clonar o projeto
-
