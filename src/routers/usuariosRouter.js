@@ -1,93 +1,75 @@
 import express from "express";
-import {
-  findAll,
-  findById,
-  remove,
-  save, 
-  update
-} from "../services/usuariosService.js";
+import { findAll, findById, remove, save, update } from "../services/produtosService.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
-const usuariosRouter = express.Router();
+const produtosRouter = express.Router();
 
-usuariosRouter.get("/usuarios", async (req, res) => {
-  try {
-    const usuarios = await findAll();
-    return res.status(200).json(usuarios);
-  } catch (error) {
-    return res.status(500).json({ msg: "Houve um erro. Tente mais tarde." });
-  }
-});
-
-usuariosRouter.get("/usuarios/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const usuario = await findById(id);
-    if (usuario) {
-      return res.status(200).json(usuario);
-    } else {
-      return res.status(404).json({ msg: "Usuário não encontrado." });
+produtosRouter.get("/produtos", authMiddleware, async (req, res) => {
+    try {
+        const produtos = await findAll();
+        return res.status(200).json(produtos);
+    } catch (error) {
+        return res.status(500).json({ msg: "Erro interno no servidor." });
     }
-  } catch (error) {
-    return res.status(500).json({ msg: "Houve um erro. Tente mais tarde." });
-  }
 });
 
-usuariosRouter.post("/usuarios", async (req, res) => {
-  try {
-    const usuario = req.body;
-    await save(usuario);
-    return res.status(201).json({ msg: "Usuário cadastrado." });
-  } catch (error) {
-    return res.status(500).json({ msg: "Houve um erro. Tente mais tarde." });
-  }
-});
-
-usuariosRouter.put("/usuarios/:id", async (req, res) => {
+produtosRouter.get("/produtos/:id", authMiddleware, async (req, res) => {
     try {
         const id = req.params.id;
-        const usuario = req.body;
-        const flag = await update(id, usuario);        
-        if (flag) {
-            return res.status(200).json({ msg: "Usuário atualizado." });
+        const produto = await findById(id);
+        if (produto) {
+            return res.status(200).json(produto);
         } else {
-            return res.status(404).json({ msg: "Usuário não encontrado." });
+            return res.status(404).json({ msg: "Produto não encontrado." });
         }
     } catch (error) {
-        return res.status(500).json({ msg: "Houve um erro. Tente mais tarde." });
+        return res.status(500).json({ msg: "Erro interno no servidor." });
     }
 });
 
-usuariosRouter.delete("/usuarios/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const flag = await remove(id);
-
-    if (flag) {
-      return res.status(200).json({ msg: "Usuário excluído." });
-    } else {
-      return res.status(404).json({ msg: "Usuário não encontrado." });
+produtosRouter.post("/produtos", authMiddleware, async (req, res) => {
+    try {
+        const produto = req.body;
+        await save(produto);
+        return res.status(201).json({ msg: "Produto cadastrado." });
+    } catch (error) {
+        return res.status(500).json({ msg: "Erro interno no servidor." });
     }
-  } catch (error) {
-    return res.status(500).json({ msg: "Houve um erro. Tente mais tarde." });
-  }
 });
 
-export default usuariosRouter;
+produtosRouter.put("/produtos/:id", authMiddleware, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const produto = req.body;
+        const flag = await update(id, produto);
+        if (flag) {
+            return res.status(200).json({ msg: "Produto alterado." });
+        } else {
+            return res.status(404).json({ msg: "Produto não encontrado." });
+        }
+    } catch (error) {
+        return res.status(500).json({ msg: "Erro interno no servidor." });
+    }
+});
 
-// Crie as funcionalidades necessárias para gestão de usuários no sistema de estoque.
-// Para isso construa os pontos de extreminidades listados abaixo no projeto.
+produtosRouter.delete("/produtos/:id", authMiddleware, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const flag = await remove(id);
+        if (flag) {
+            return res.status(200).json({ msg: "Produto excluido." });
+        } else {
+            return res.status(404).json({ msg: "Produto não encontrado." });
+        }
+    } catch (error) {
+        return res.status(500).json({ msg: "Erro interno no servidor." });
+    }
+});
 
-// GET /usuarios
-// Deve retornar todos os usuários cadastrados.
+export default produtosRouter;
 
-// GET /usuarios/:id
-// Deve retornar um único usuário pelo id.
-
-// POST /usuarios
-// Deve criar um novo usuário com nome, email, idade.
-
-// PUT /usuarios/:id
-// Deve atualizar as informações de um usuário com base no id.
-
-// DELETE /usuarios/:id
-// Deve remover um usuário pelo id.
+// CRUD
+// Create - Criar/Cadastrar
+// Read - Ler/Consultar
+// Update - Atualizar
+// Delete - Excluir
