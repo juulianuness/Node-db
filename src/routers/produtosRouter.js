@@ -6,10 +6,13 @@ import {
     save,
     update
 } from "../services/produtosService.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 const produtosRouter = express.Router();
 
-produtosRouter.get("/produtos", async (req, res) => {
+
+
+produtosRouter.get("/produtos", authMiddleware ,async (req, res) => {
     try {
         const produtos = await findAll();
         return res.status(200).json(produtos);
@@ -18,7 +21,7 @@ produtosRouter.get("/produtos", async (req, res) => {
     }
 });
 
-produtosRouter.get("/produtos/:id", async (req, res) => {
+produtosRouter.get("/produtos/:id", authMiddleware , async (req, res) => {
     try {
         const id = req.params.id;
         const produto = await findById(id);
@@ -32,7 +35,7 @@ produtosRouter.get("/produtos/:id", async (req, res) => {
     }
 });
 
-produtosRouter.post("/produtos", async (req, res) => {
+produtosRouter.post("/produtos", authMiddleware ,async (req, res) => {
     try {
         const produto = req.body;
         await save(produto);
@@ -42,7 +45,7 @@ produtosRouter.post("/produtos", async (req, res) => {
     }
 });
 
-produtosRouter.put("/produtos/:id", async (req, res) => {
+produtosRouter.put("/produtos/:id", authMiddleware , async (req, res) => {
     try {
         const id = req.params.id;
         const produto = req.body;
